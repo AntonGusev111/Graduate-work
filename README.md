@@ -4,7 +4,7 @@
 >2. клонировать репозиторий ``` git clone https://github.com/AntonGusev111/Graduate-work ```
 >3. Создать виртуальное окружение ``` python -m venv venv```
 >4. Запустить виртуальное окружение ``` venv\Scripts\activate ```
->5. Создать бд pjstgres ```create database filehost_db;```
+>5. Создать бд postgres ```create database filehost_db;```
 >6. Создать пользователя БД ```create user host_admin with password '123456789';```
 >7. Связать пользователя и БД ```alter database filehost_db owner to host_admin;```
 >8. Перейти в папку host и установить зависимости ```pip install -r requirements.txt```
