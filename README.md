@@ -7,7 +7,7 @@
 >5. Создать бд postgres ```create database filehost_db;```
 >6. Создать пользователя БД ```create user host_admin with password '123456789';```
 >7. Связать пользователя и БД ```alter database filehost_db owner to host_admin;```
->8. Зайти в папку host/frontend и провести установку всех пакетов ```npm --save-dev install;```
+>8. Зайти в папку host/frontend и провести установку всех пакетов ```npm install;```
 >9. Находясь в той же папке собрать проект ```npm run build;```
 >10. Перейти в папку host и установить зависимости ```pip install -r requirements.txt```
 >11. Провести миграции ```python manage.py migrate```
