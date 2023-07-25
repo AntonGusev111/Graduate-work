@@ -25,11 +25,31 @@ function RegistrationsForm() {
     }
   }, [loginError, passwordError]);
 
+  const loginErrorHandler = (value) => {
+    const re = /[а-яА-Я]/;
+    if (value.length > 0) {
+      if (Number.isInteger(parseInt(value[0]))) {
+        setLoginError("First character cannot be a number");
+      }
+      if (value[0] == value[0].toLowerCase()) {
+        setLoginError("Login must start with a capital letter");
+      }
+      if (value.length < 4 || value.length > 20) {
+        setLoginError("Incorrect length");
+      }
+      if (re.test(value)) {
+        setLoginError("Only latin letters can be used");
+      }
+    } else {
+      setLoginError("The field cannot be empty");
+    }
+  };
+
   const loginHandler = (e) => {
     setLogin(e.target.value);
     const re = /^[A-Z](.[a-zA-Z0-9_-]*){3,20}/;
     if (!re.test(String(e.target.value)) || e.target.value.length > 20) {
-      setLoginError("Wrong Login");
+      loginErrorHandler(e.target.value);
     } else {
       setLoginError("");
     }

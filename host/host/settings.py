@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+import mimetypes
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,9 @@ SECRET_KEY = 'django-insecure-*@szo^!&ggwt219d!zn))&_57paug9y#qo-4*j4!&nkfvts+a@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['80.78.241.160',]
+ALLOWED_HOSTS = ["*"] #'80.78.241.160',
+
+
 
 # Application definition
 
@@ -92,7 +95,7 @@ TEMPLATES = [
         },
     },
 ]
-
+mimetypes.add_type("text/css", ".css", True)
 WSGI_APPLICATION = 'host.wsgi.application'
 
 # Database
@@ -159,6 +162,7 @@ PASSWORD_HASHERS = [
 
 
 STATIC_URL = "/static/"
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/build/static')

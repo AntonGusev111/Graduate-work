@@ -41,3 +41,5 @@ urlpatterns = [
                   path('download/', file_download),
                   path('accounts/profile/', user_permissions)
               ] + login_router.urls + admin_router.urls + storage_router.urls + f_router.urls
+
+handler404 = "host.views.page_not_found_view"

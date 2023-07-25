@@ -58,8 +58,15 @@ function File({ file }) {
         visible: false,
       });
     }, 1000);
+      let inp = document.createElement('input')
+      inp.value = file.unique_url
+      document.body.appendChild(inp)
+      inp.select()
+      document.execCommand('copy')
+      document.body.removeChild(inp)
 
-    navigator.clipboard.writeText(file.unique_url).then(() => {});
+      //navigator.clipboard.writeText(file.unique_url).then(() => {});
+
   };
 
   const dellFileHandler = () => {

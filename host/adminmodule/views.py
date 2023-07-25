@@ -9,6 +9,7 @@ from .serializers import RegistrationSerializer, AdminUsersSerializer
 from fstorage.models import Storage_model
 from rest_framework.response import Response
 from django.shortcuts import render
+
 from django.http import request
 
 logger = logging.getLogger(__name__)
@@ -46,3 +47,5 @@ def index(request):
 def user_permissions(request):
     logger.info(f'User {request.user.id} checked permissions')
     return Response({"id": request.user.id, "is_staff": request.user.is_staff})
+
+

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { LoadFileList } from "./LoadFileList";
 import { useFileStore } from "../store/store";
 import uuid from "react-uuid";
@@ -7,6 +7,7 @@ function DnDFiles() {
   const [drag, setDrag] = useState(false);
   const [fileList, setFileList] = useState([]);
   const fetchFiles = useFileStore((state) => state.fetchFiles);
+  const ref = useRef();
 
   function dragStartHandler(e) {
     e.preventDefault();
@@ -28,6 +29,17 @@ function DnDFiles() {
     setFileList([...fileList, ...objectsList]);
     setDrag(false);
   }
+
+  const loadButtonHandler = (e) => {
+    ref.current.click();
+  };
+
+  const loadFileHandler = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFileList([...fileList, { id: uuid(), file: file, comment: "" }]);
+    }
+  };
 
   const loadFiles = async () => {
     let myHeaders = new Headers();
@@ -56,6 +68,15 @@ function DnDFiles() {
 
   return (
     <>
+      <button onClick={loadButtonHandler}> Uplaod file</button>
+      <input
+        type="file"
+        ref={ref}
+        onChange={(e) => {
+          loadFileHandler(e);
+        }}
+        style={{ display: "none" }}
+      ></input>
       <div className="DropFilesBlock">
         <div className="loadfileList">
           {fileList.length > 0
