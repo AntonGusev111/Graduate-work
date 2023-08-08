@@ -51,13 +51,13 @@ function UsersView({ UserRow }) {
       <div className="Cell Small">
         <pre>
           {UserRow.is_staff == true ? "Admin" : "User"}&nbsp;
-          <button onClick={ChangeStatusHandler}>Change</button>
+          <button className="FileBtn" onClick={ChangeStatusHandler}>Change</button>
         </pre>
       </div>
       {UserRow.storage.length > 0 ? (
         <div className="Cell Small">
           {" "}
-          <button onClick={userStoreView}>{UserRow.storage[0].owner}</button>
+          <button className="FileBtn" onClick={userStoreView}>{UserRow.storage[0].owner}</button>
           <div>files-{UserRow.storage[0].file.length}</div>
           <div>
             size -{" "}
@@ -74,7 +74,7 @@ function UsersView({ UserRow }) {
         {UserRow.first_name} {UserRow.last_name}
       </div>
       <div className="Cell Small">
-        <button onClick={dellUserHandler}>Dell</button>
+        <button className="FileBtn" onClick={dellUserHandler}>Dell</button>
       </div>
     </>
   );

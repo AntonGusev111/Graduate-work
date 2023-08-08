@@ -67,8 +67,7 @@ function DnDFiles() {
   };
 
   return (
-    <>
-      <button onClick={loadButtonHandler}> Uplaod file</button>
+    <div className="FileArea">
       <input
         type="file"
         ref={ref}
@@ -109,9 +108,11 @@ function DnDFiles() {
           </div>
         )}
       </div>
-
-      <button onClick={loadFiles}>Load files</button>
-    </>
+      <div className="LoadButtonsBlock">
+        <button className="LoadButton" onClick={loadButtonHandler}>Загрузить</button>
+        <button className="LoadButton" onClick={loadFiles}>Сохранить</button>
+      </div>
+    </div>
   );
 }
 

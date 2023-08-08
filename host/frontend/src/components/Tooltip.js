@@ -1,7 +1,7 @@
 import React from "react";
 
 function Tooltip({ x, y, value, visible }) {
-  const style = { marginTop: y, marginLeft: x };
+  const style = { marginTop: y, marginLeft: x-110 };
   return (
     <div
       className={visible == true ? "Tooltip Active" : "Tooltip"}

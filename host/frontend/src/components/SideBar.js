@@ -16,17 +16,17 @@ function SideBar() {
   return (
     <div className="SideBar">
       {authStatus.status == true ? (
-        <NavLink onClick={handleFecthMyFiles} className="nav-link" to="/store">
-          Мое Хранилище
+        <NavLink onClick={handleFecthMyFiles} className="nav-link sbarLink" to="/store">
+          Хранилище
         </NavLink>
       ) : (
         ""
       )}
 
-      <div>------------</div>
+      <div className="dividingLine"></div>
       {authStatus.is_staff == true ? (
-        <NavLink className="nav-link" to="/userslist">
-          Список Пользователей
+        <NavLink className="nav-link sbarLink" to="/userslist">
+          Пользователи
         </NavLink>
       ) : (
         ""

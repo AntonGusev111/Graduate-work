@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from rest_framework.routers import DefaultRouter
+from django.urls import include
 
 from adminmodule.views import RegistrationViewSet, AdminUsersViewSet
 from fstorage.views import StorageViewSet, FileViewSet, file_download
@@ -39,7 +40,8 @@ urlpatterns = [
                   path('', index),
                   path('api-auth/', include('rest_framework.urls')),
                   path('download/', file_download),
-                  path('accounts/profile/', user_permissions)
+                  path('accounts/profile/', user_permissions),
+                  #re_path(r"^", index),
               ] + login_router.urls + admin_router.urls + storage_router.urls + f_router.urls
 
 handler404 = "host.views.page_not_found_view"

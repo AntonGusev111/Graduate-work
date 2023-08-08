@@ -58,15 +58,14 @@ function File({ file }) {
         visible: false,
       });
     }, 1000);
-      let inp = document.createElement('input')
-      inp.value = file.unique_url
-      document.body.appendChild(inp)
-      inp.select()
-      document.execCommand('copy')
-      document.body.removeChild(inp)
+    let inp = document.createElement("input");
+    inp.value = file.unique_url;
+    document.body.appendChild(inp);
+    inp.select();
+    document.execCommand("copy");
+    document.body.removeChild(inp);
 
-      //navigator.clipboard.writeText(file.unique_url).then(() => {});
-
+    //navigator.clipboard.writeText(file.unique_url).then(() => {});
   };
 
   const dellFileHandler = () => {
@@ -97,23 +96,36 @@ function File({ file }) {
       <div className="Cell Small">{file.id}</div>
       <div className="Cell">
         <input
+          className="FileInputName"
           ref={originalFileName}
           defaultValue={file.original_file_name}
         ></input>
       </div>
       <div className="Cell">
-        <input ref={comment} defaultValue={file.comment}></input>
-        <button onClick={saveCommentHandler}>Save</button>
+        <input
+          className="FileInput"
+          ref={comment}
+          defaultValue={file.comment}
+        ></input>
+        <button className="FileBtn" onClick={saveCommentHandler}>
+          Save
+        </button>
       </div>
       <div className="Cell Small">{formatBytes(file.size)}</div>
       <div className="Cell Small">
-        <button onClick={copyHandler}>Copy Url</button>
+        <button className="FileBtn" onClick={copyHandler}>
+          Copy Url
+        </button>
       </div>
       <div className="Cell Small">
-        <a href={file.unique_url}>Download</a>
+        <div className="dwloadfile">
+        <a className=" nav-link dwnloadlink" href={file.unique_url}>Download</a>
+        </div>
       </div>
       <div className="Cell Small">
-        <button onClick={dellFileHandler}>Dell</button>
+        <button className="FileBtn" onClick={dellFileHandler}>
+          Dell
+        </button>
       </div>
       <div className="Cell Small">{file.last_download}</div>
       <div className="Cell Small">{file.upload_date}</div>

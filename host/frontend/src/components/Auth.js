@@ -9,12 +9,14 @@ function Auth() {
     <div className="Auth">
       {authStatus.status == false ? (
         <>
+        <NavLink className="nav-link" to="/login">
+            Вход 
+          </NavLink>
+          <span> &nbsp; |</span>
           <NavLink className="nav-link" to="/registration">
             Регистрация
           </NavLink>
-          <NavLink className="nav-link" to="/login">
-            Войти
-          </NavLink>
+          
         </>
       ) : (
         ""

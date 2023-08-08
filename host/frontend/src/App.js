@@ -1,7 +1,7 @@
 import "./App.css";
 import { MyRouter } from "./router/router";
 import { TopBar } from "./components/TopBar";
-import { SideBar } from "./components/SideBar";
+
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <div className="MainConteiner">
         <TopBar />
         <div className="bodyArea">
-          <SideBar />
+         
           <MyRouter />
         </div>
       </div>
@@ -18,3 +18,4 @@ function App() {
 }
 
 export default App;
+// <SideBar />

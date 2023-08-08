@@ -5,15 +5,18 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../store/store";
 import { useFileStore } from "../store/store";
 import { useRequestedUserId } from "../store/store";
+import loginImg from "../assets/login.jpg";
 
 function LoginForm() {
   const [login, setLogin] = useState("");
   const [password, setpassword] = useState("");
   const [loginDirty, setLoginDirty] = useState(false);
   const [passwordDirty, setpasswordDirty] = useState(false);
-  const [loginError, setloginError] = useState("The field cannot be empty");
+  const [loginError, setloginError] = useState(
+    <div className="errorHelp">Необходимо заполнить</div>
+  );
   const [passwordError, setpassworError] = useState(
-    "The field cannot be empty"
+    <div className="errorHelp">Необходимо заполнить</div>
   );
   const [formValid, setValid] = useState(false);
   const navigate = useNavigate();
@@ -72,36 +75,48 @@ function LoginForm() {
   };
 
   return (
-    <form className="form">
-      <h5>Login</h5>
-      {loginDirty && loginError && (
-        <div style={{ color: "red" }}>{loginError}</div>
-      )}
-      <input
-        onBlur={blurHandler}
-        name="login"
-        placeholder="Enter login"
-        value={login}
-        onChange={(e) => loginHandler(e)}
-        type="text"
-      ></input>
-      <h5>Password</h5>
-      {passwordDirty && passwordError && (
-        <div style={{ color: "red" }}>{passwordError}</div>
-      )}
-      <input
-        onBlur={blurHandler}
-        name="password"
-        placeholder="enter password"
-        value={password}
-        type="password"
-        onChange={(e) => passwordHandler(e)}
-      ></input>
-      <br></br>
-      <button onClick={sendFormhandler} disabled={!formValid}>
-        Login
-      </button>
-    </form>
+    <div className="LoginPage">
+      <div className="LoginForm">
+        <h2>Вход</h2>
+        <form className="LogForm">
+          <h3 className="formH">Логин</h3>
+          <input
+            className="FormInput"
+            onBlur={blurHandler}
+            name="login"
+            value={login}
+            onChange={(e) => loginHandler(e)}
+            type="text"
+          ></input>
+          {loginDirty && loginError && (
+            <div style={{ color: "red" }}>{loginError}</div>
+          )}
+          <h3 className="formHeader">Пароль</h3>
+          <input
+            className="FormInput"
+            onBlur={blurHandler}
+            name="password"
+            value={password}
+            type="password"
+            onChange={(e) => passwordHandler(e)}
+          ></input>
+          {passwordDirty && passwordError && (
+            <div style={{ color: "red" }}>{passwordError}</div>
+          )}
+          <br></br>
+          <button
+            className="logFormBtn colorBtn mainBtn"
+            onClick={sendFormhandler}
+            disabled={!formValid}
+          >
+            Войти
+          </button>
+        </form>
+      </div>
+      <div className="LogPageImg">
+        <img className='LogImg' src={loginImg} />
+      </div>
+    </div>
   );
 }
 
